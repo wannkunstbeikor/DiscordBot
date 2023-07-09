@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
 import re
+import os
+from dotenv import load_dotenv
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -49,5 +51,6 @@ async def on_thread_create(thread: discord.Thread):
             await thread.delete()
             await mes.author.send("Please read the readme and format your message correctly!")
 
-
-bot.run('MTEyNTg2MzY4NDE4MzQ0NTUzNA.GGkjTr.bNjR-MP6g22vGlDIQ2wu8rCot1OVuPCp1YYS58')
+load_dotenv()
+token = os.environ['TOKEN']
+bot.run(token)
